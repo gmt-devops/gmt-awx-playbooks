@@ -1,13 +1,11 @@
-- name: Ejecutar script PowerShell de blindado
-  hosts: windows
-  gather_facts: no
-
+- name: Ejecucion de powershell remoto desde AWX Tests
+  hosts: all
   tasks:
-    - name: Ejecutar script existente en la VM
+    - name: Hello Message
       win_shell: |
         powershell.exe -ExecutionPolicy Bypass -File C:\Users\"Alejandro Meranza"\Desktop\rgGPSAppGW_Rules.ps1
       register: result
-
-    - name: Mostrar salida
       debug:
+        msg: "PowerShell execution Test Completed"
         var: result.stdout
+
