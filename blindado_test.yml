@@ -3,7 +3,7 @@
   tasks:
     - name: Hello Message
       win_shell: |
-        powershell.exe -ExecutionPolicy Bypass -File C:\Users\"Alejandro Meranza"\Desktop\rgGPSAppGW_Rules.ps1
+        powershell.exe -ExecutionPolicy Bypass -File D:\rgGPSAppGW_Rules.ps1
       register: result
       debug:
         msg: "PowerShell execution Test Completed"
