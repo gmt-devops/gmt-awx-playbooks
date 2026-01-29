@@ -1,11 +1,14 @@
-- name: Ejecucion de powershell remoto desde AWX Tests
+- name: Ejecucion de PowerShell remoto desde AWX
   hosts: all
-  tasks:
-    - name: Hello Message
-      win_shell: |
-        powershell.exe -ExecutionPolicy Bypass -File D:\rgGPSAppGW_Rules.ps1
-      register: result
-      debug:
-        msg: "PowerShell execution Test Completed"
-        var: result.stdout
+  gather_facts: no
 
+  tasks:
+    - name: Ejecutar script PowerShell remoto
+      win_shell: >
+        powershell.exe -ExecutionPolicy Bypass
+        -File "D:\rgGPSAppGW_Rules.ps1"
+      register: ps_result
+
+    - name: Mostrar salida del script
+      debug:
+        var: ps_result.stdout
